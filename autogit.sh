@@ -1,4 +1,4 @@
 git add -A
-git commit -m "desafios - aula 1 - feita"
+git commit -m "desafio02.py - melhorado"
 git push -u origin main
 git status

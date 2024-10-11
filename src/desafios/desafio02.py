@@ -1,14 +1,14 @@
 class People:
-    def __init__(self, name, age, weigth, heigth):
+    def __init__(self, name, age, heigth, weigth):
         self.name = name
         self.age = age
-        self.weigth = weigth
         self.heigth = heigth
+        self.weigth = weigth
 
     # Getting old, getting fat, getting thin, growing up.
     # 
 
-    def getting_old(self):
+    def calculate_height(self):
         final_heigth = self.heigth
 
         for value in range(1, self.age):
@@ -20,5 +20,10 @@ class People:
 
         return final_heigth
 
-people = People("Carlos", 20, 65.6, 1.78)
-print(f"Sua altura final: {people.getting_old()} cm")
+user_name = input("Seu nome: ")
+user_age = int(input("Sua idade: "))
+user_height = float(input("Sua altura: "))
+user_weight = float(input("Seu peso: "))
+people = People(user_name, user_age, user_height, user_weight)
+
+print(f"\n{people.name}, sua altura final eh {people.calculate_height()}cm")

@@ -3,13 +3,12 @@ class User:
         self.weigth = weigth
         self.heigth = heigth
 
-    def calc_imc(self):
+    def calc_imc(self) -> float:
         result = self.weigth / (heigth * heigth)
 
         return float(round(result, 2))
 
-    def show_result_table(self, resultIMC):
-
+    def show_result_table(self, resultIMC) -> None:
         if resultIMC < 17:
             print("Muito abaixo do peso")
         elif 17 <= resultIMC <= 18.49:

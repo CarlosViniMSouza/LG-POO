@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cadastro de Produto</title>
+</head>
+
+<body>
+    <form id="productForms">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="price">Preço:</label>
+        <input type="text" id="price" name="price"><br><br>
+        <label for="quant">Quantidade:</label>
+        <input type="text" id="quant" name="quant"><br><br>
+        <input type="submit" value="signup">
+    </form>
+
+    <script>
+        document.getElementById('productForms').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById('name').value;
+            let price = document.getElementById('price').value;
+            let quant = document.getElementById('quant').value;
+
+            // Aqui você pode automatizar a chamada ao BotCity para criar o objeto Produto
+            // Suponhamos que temos uma função `criarProduto` em Python
+            create_product(name, price, quant);
+        });
+    </script>
+</body>
+
+</html>

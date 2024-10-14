@@ -6,9 +6,16 @@ class People:
         self.weigth = weigth
 
     # Getting old, getting fat, getting thin, growing up.
-    # 
 
-    def calculate_height(self):
+    def getting_old(self) -> float:
+        for _ in range(self, age):
+            if self.age < 21:
+                self.calculate_height(0.5)
+            self.age += 1
+
+    # (...)
+    
+    def calculate_height(self) -> float:
         final_heigth = self.heigth
 
         for value in range(1, self.age):

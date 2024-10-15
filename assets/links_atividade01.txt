@@ -1,0 +1,5 @@
+Exercicio 01 (Livro e Livraria): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/task01.py
+
+Exercicio 02 (Bot + Forms): https://github.com/CarlosViniMSouza/LG-POO/tree/main/projects/bot_poo_forms
+
+By: Carlos Vinicius Monteiro de Souza

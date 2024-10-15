@@ -3,8 +3,3 @@ Email: 2021002252@ifam.edu.br
 Password: admin123
 Contact: (12) 1234-1234
 Login: CarlosViniMSouza
-Name: Carlos Souza
-Email: 2021002252@ifam.edu.br
-Password: admin123
-Contact: (12) 1234-1234
-Login: CarlosViniMSouza

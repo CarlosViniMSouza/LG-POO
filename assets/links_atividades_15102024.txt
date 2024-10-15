@@ -1,0 +1,3 @@
+Atividade 03 (Carro e Veiculo): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/task03.py
+
+Atividade 04 (Bot com múltiplos Forms): https://github.com/CarlosViniMSouza/LG-POO/tree/main/projects/bot_multiples_forms

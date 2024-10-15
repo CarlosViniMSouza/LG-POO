@@ -1,5 +1,5 @@
 class Book:
-    def __init__(self, title, author):
+    def __init__(self, title: str, author: str):
         self.title = title
         self.author = author
         self.available = True
@@ -17,7 +17,7 @@ class Book:
 
     def show_infos(self) -> None:
         available = "disponível" if self.available else "emprestado"
-        print(f'Title: {self.title}, Author: {self.author}, Available: {self.available}')
+        print(f'Title: {self.title}, Author: {self.author}, Available: {self.available} \n')
 
 class BookStore:
     def __init__(self):
@@ -31,15 +31,15 @@ class BookStore:
         for book in self.inventory:
             if book.title == title:
                 book.to_loan()
-                return
+                return None
 
-        print(f'O book "{title}" was not found in inventory!')
+        print(f'The book "{title}" was not found in inventory!')
 
     def show_inventory(self) -> None:
         if len(self.inventory) == 0:
             print("The inventory is empty")
         else:
-            print("Bookstore Inventory:")
+            print("\nBookstore Inventory:")
 
             for book in self.inventory:
                 book.show_infos()
@@ -50,23 +50,30 @@ if __name__ == "__main__":
     bookstore = BookStore()
 
     # Adicionando books à bookstore
-    book1 = Book("1984", "George Orwell")
-    book2 = Book("Dom Casmurro", "Machado de Assis")
+    book1 = Book("The C++ Programming Language", "Bjarne Stroustrup")
+    book2 = Book("The Big Start of Python", "Guido van Rossum")
+    book3 = Book("The Java Programming Language", "James Arthur Gosling")
 
     bookstore.add_book(book1)
     bookstore.add_book(book2)
+    bookstore.add_book(book3)
 
     # Exibindo o inventory
     bookstore.show_inventory()
 
     # Emprestando um book
-    bookstore.to_loan_book("1984")
+    bookstore.to_loan_book("The C++ Programming Language")
 
     # Tentando emprestar novamente o mesmo book
-    bookstore.to_loan_book("1984")
+    bookstore.to_loan_book("The C++ Programming Language")
+
+    # Tentando emprestar um livro não existente
+    bookstore.to_loan_book("The C++ Great Programming Language")
 
     # Devolvendo o book
     book1.return_book()
+    book2.return_book()
+    book3.return_book()
 
     # Exibindo o inventory novamente
     bookstore.show_inventory()

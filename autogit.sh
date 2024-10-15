@@ -1,5 +1,5 @@
 git add -A
-git commit -m "links_atividade01.txt done"
+git commit -m "task01.py update"
 git push -u origin main
 git status
 

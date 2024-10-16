@@ -1,0 +1,4 @@
+Name: Chevrolet S10 
+Year: 2024 
+Daily Value: 300 
+Type Gas: gasolina 

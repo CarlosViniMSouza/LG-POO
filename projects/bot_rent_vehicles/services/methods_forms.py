@@ -71,7 +71,7 @@ def save_forms(forms):
     file.write(f"Name: {forms.name} \n")
     file.write(f"Year: {forms.year} \n")
     file.write(f"Daily Value: {forms.daily_value} \n")
-    # file.write(f"Type Gas: {forms.type_gasoline} \n\n") # to 'Car'
-    file.write(f"Cylinders: {forms.cc} \n\n") # to 'Motocycle'
+    # file.write(f"Type Gas: {forms.type_gasoline}") # to 'Car'
+    # file.write(f"Cylinders Cap: {forms.cc}") # to 'Motocycle'
 
     file.close()

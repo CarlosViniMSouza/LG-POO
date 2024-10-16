@@ -1,5 +1,5 @@
 git add -A
-git commit -m "bot_rent_vehicles: in updating (01)"
+git commit -m "bot_rent_vehicles - bootstrap: working"
 git push -u origin main
 git status
 

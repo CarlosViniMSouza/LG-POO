@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+
 <head>
     <title> Form Rent Vehicles </title>
 
@@ -11,7 +12,7 @@
 
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <meta http-equiv="origin-trial" content="admin-ifam-2023-agro">
-    
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./styles.css" rel="stylesheet">
@@ -19,6 +20,7 @@
 
     <meta name="theme-color" content="#712cf9">
 </head>
+
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <main class="form-signin w-100 m-auto">
         <form class="text-center" name="my-form">
@@ -26,12 +28,13 @@
             <h1 class="h3 mb-3 fw-normal">Rent Vehicles System - Motocycle</h1>
 
             <div class="form-floating">
-                <input required name="cc-field" id="idCC" type="text" class="form-control rounded" placeholder="Cylinder Capacity">
+                <input required name="cc-field" id="cylinder" type="text" class="form-control rounded"
+                    placeholder="Cylinder Capacity">
                 <label for="cc-field" class="form-label">Cylinder Capacity</label>
             </div>
 
             <!-- <button id="bt-submit" class="btn btn-success w-100 py-2" type="submit" onsubmit="submitForm()">Entrar</button> -->
-            <a id="bt-submit" class="btn btn-success w-75 py-2 mt-4" role="button" onclick="sendData()"> Submit </a>
+            <a id="finish" class="btn btn-success w-75 py-2 mt-4" role="button" onclick="sendData()"> Submit </a>
 
             <p class="mt-5 mb-3 text-body-secondary">&copy; 2017 - 2023</p>
         </form>
@@ -40,4 +43,5 @@
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script async defer type="text/javascript" src="./script.js"></script>
 </body>
+
 </html>

@@ -9,24 +9,24 @@ async function sendData() {
             "Access-Control-Allow-Credentials": "true"
         },
         body: JSON.stringify({
-            "name": document.getElementById("idName").value,
-            "year": document.getElementById("idYear").value,
-            "daily_value": document.getElementById("idDailyValue").value
+            "name": document.getElementById("name").value,
+            "year": document.getElementById("year").value,
+            "daily_value": document.getElementById("dailyvalue").value
         })
     })
-    .then(response => {
-        if (response.ok) {
-            location.href = "./forms/index.html";
-        } else {
-            throw new Error('Network Response Error!');
-        }
-        
-        return response.json();
-    })
-    .then(json => {
-        localStorage.setItem('accessToken', JSON.stringify(json.accessToken));
-    })
-    .catch(error => {
-        console.log(error);
-    });
+        .then(response => {
+            if (response.ok) {
+                location.href = "./forms/index.html";
+            } else {
+                throw new Error('Network Response Error!');
+            }
+
+            return response.json();
+        })
+        .then(json => {
+            localStorage.setItem('accessToken', JSON.stringify(json.accessToken));
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }

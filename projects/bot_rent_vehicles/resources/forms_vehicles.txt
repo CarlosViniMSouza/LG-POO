@@ -1,4 +1,4 @@
-Name: Chevrolet S10 
-Year: 2024 
-Daily Value: 300 
-Type Gas: gasolina 
+Name: BMX XL 
+Year: 2020 
+Daily Value: 75 
+Cylinders: 500

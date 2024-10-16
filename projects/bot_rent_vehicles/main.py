@@ -18,25 +18,27 @@ def main():
     try:
         # This is all pseudocode
         bot.browse("http://127.0.0.1:5500/projects/bot_rent_vehicles/resources/forms_base.html")
-        data_base = fillout_forms_base(bot, car01)
+        fillout_forms_base(bot, car01)        
 
-        save_forms(car01)
+        # save_forms(car01)
 
         # http://127.0.0.1:5500/projects/bot_rent_vehicles/resources/forms_base.html
         # Criar função para escolher qual veículo selecionar
 
-        button = 0
+        button = 2
         
         if button == 1:
             bot.browse("http://127.0.0.1:5500/projects/bot_rent_vehicles/resources/forms_car.html")
-            fillout_forms_car(bot, car01)
 
+            fillout_forms_car(bot, car01)
             save_forms(car01)
+
         elif button == 2:
             bot.browse("http://127.0.0.1:5500/projects/bot_rent_vehicles/resources/forms_motocycle.html")
-            fillout_forms_motocycle(bot, bike01)
 
+            fillout_forms_motocycle(bot, bike01)
             save_forms(bike01)
+
         else:
             pass
 

@@ -52,12 +52,28 @@ class Vehicle:
 class Car(Vehicle):
     def __init__(self, name: str, year: int, daily_value: float, type_gasoline: str):
         super().__init__(name, year, daily_value)
-        self.type_gasoline = type_gasoline
+        self._type_gasoline = type_gasoline
+
+    @property
+    def type_gasoline(self):
+        return self._type_gasoline
+
+    @type_gasoline.setter
+    def type_gasoline(self, type_gasoline: str):
+        self._type_gasoline = type_gasoline
 
 class Motorcycle(Vehicle):
     def __init__(self, name: str, year: int, daily_value: float, cc: int):
         super().__init__(name, year, daily_value)
-        self.cc = cc
+        self._cc = cc
+
+    @property
+    def cc(self):
+        return self._cc
+
+    @cc.setter
+    def cc(self, cc: int):
+        self._cc = cc
 
     def calc_total_rental(self, number_days, discount=0):
         total_value = super().calc_total_rental(number_days, discount)

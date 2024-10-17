@@ -1,3 +1,14 @@
+/*
+function showAlert() {
+    alert('Vehicle added successfully!')
+    setTimeout(closeAlert(), 1000)
+}
+
+function closeAlert() {
+    window.close()
+}
+*/
+
 async function sendData() {
     await fetch(
         'http://127.0.0.1:3000/projects/bot_rent_vehicles/bootstrap/index.html', {
@@ -14,19 +25,19 @@ async function sendData() {
             "daily_value": document.getElementById("idDailyValue").value
         })
     })
-    .then(response => {
-        if (response.ok) {
-            location.href = "./forms/index.html";
-        } else {
-            throw new Error('Network Response Error!');
-        }
-        
-        return response.json();
-    })
-    .then(json => {
-        localStorage.setItem('accessToken', JSON.stringify(json.accessToken));
-    })
-    .catch(error => {
-        console.log(error);
-    });
+        .then(response => {
+            if (response.ok) {
+                location.href = "./forms/index.html";
+            } else {
+                throw new Error('Network Response Error!');
+            }
+
+            return response.json();
+        })
+        .then(json => {
+            localStorage.setItem('accessToken', JSON.stringify(json.accessToken));
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }

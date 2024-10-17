@@ -4,7 +4,7 @@ Ideia Geral
 
 * O robô, em essência, será usado para simular a entrada de dados por um usuário, preenchendo os campos necessários e acionando os botões para interagir com a aplicação.
 
-- Passos para implementar:
+Passos para implementar:
 
 1. Criar uma interface com campos de texto para o 'nome' do veículo, 'ano', 'valor diário' de aluguel e opções para 'combustível/cilindrada'.
 

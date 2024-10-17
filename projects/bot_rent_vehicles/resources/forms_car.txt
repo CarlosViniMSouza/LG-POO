@@ -1,0 +1,6 @@
+Name: Chevrolet S10 
+Year: 2024 
+Daily Value: 300 
+Type Gas: gasolina 
+Rent calculated (without discount): R$2100 
+Rent calculated (with 10% discount): R$1890.0

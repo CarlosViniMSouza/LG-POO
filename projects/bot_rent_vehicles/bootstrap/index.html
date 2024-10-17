@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
+
 <head>
     <title> Form Rent Vehicles </title>
 
@@ -11,7 +12,7 @@
 
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <meta http-equiv="origin-trial" content="admin-ifam-2023-agro">
-    
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
     <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./styles.css" rel="stylesheet">
@@ -19,37 +20,50 @@
 
     <meta name="theme-color" content="#712cf9">
 </head>
+
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <main class="form-signin w-100 m-auto">
-        <form class="text-center" name="my-form">
-            <img class="mb-4 justify-content-center" src="./assets/brand/bootstrap-logo.svg" width="75" height="60">
-            <h1 class="h3 mb-3 fw-normal">Rent Vehicles System</h1>
+        <form name="my-form">
+            <img class="mb-2 flex justify-content-center text-align-center" src="./assets/brand/bootstrap-logo.svg"
+                width="75" height="60">
+
+            <h1 class="h3 mb-3 fw-normal text-center">Rent Vehicles System</h1>
 
             <div class="form-floating">
                 <input required name="name-field" id="name" type="text" class="form-control rounded" placeholder="Name">
                 <label for="name-field" class="form-label">Name</label>
             </div>
-            
+
             <div class="form-floating">
                 <input required name="year-field" id="year" type="text" class="form-control rounded" placeholder="Year">
                 <label for="year-field" class="form-label">Year</label>
             </div>
 
             <div class="form-floating">
-                <input required name="daily-value-field" id="dailyvalue" type="text" class="form-control rounded" placeholder="Daily Value">
+                <input required name="daily-value-field" id="dailyvalue" type="text" class="form-control rounded"
+                    placeholder="Daily Value">
                 <label for="daily-value-field" class="form-label">Daily Value</label>
             </div>
 
-            <!-- <button id="bt-submit" class="btn btn-success w-100 py-2" type="submit" onsubmit="submitForm()">Entrar</button> -->
-            <a id="submitcar" class="btn btn-success w-75 py-2 mt-4" role="button" onclick="sendData()"> Car </a>
+            <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" value="" id="checkGasoline">
+                <label class="form-check-label" for="flexCheckDefault">Combustível
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkCylinder">
+                <label class="form-check-label" for="flexCheckDefault">Cilindradas
+                </label>
+            </div>
 
-            <a id="submitbike" class="btn btn-success w-75 py-2 mt-4" role="button" onclick="sendData()"> Motocycle </a>
+            <a id="submit" class="btn btn-success w-100 py-2 mt-4" role="button" onclick="sendData()"> Submit </a>
 
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2017 - 2023</p>
+            <p class="mt-2 mb-2 text-body-secondary text-center">&copy; 2017 - 2023</p>
         </form>
     </main>
 
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
     <script async defer type="text/javascript" src="./script.js"></script>
 </body>
+
 </html>

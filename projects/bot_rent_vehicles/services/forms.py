@@ -1,37 +1,37 @@
 class Vehicle:
     _number_vehicles = 0
 
-    def __init__(self, name: str, year: int, daily_value: float):
+    def __init__(self, name: str, year: int, daily_value: float) -> None:
         self._name = name
         self._year = year
         self._daily_value = daily_value
         Vehicle._number_vehicles += 1
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
     
     @property
-    def year(self):
+    def year(self) -> int:
         return self._year
     
     @property
-    def daily_value(self):
+    def daily_value(self) -> float:
         return self._daily_value
     
     @name.setter
-    def name(self, name: str):
+    def name(self, name: str) -> None:
         self._name = name
 
     @year.setter
-    def year(self, year: int):
+    def year(self, year: int) -> None:
         self._year = year
 
     @daily_value.setter
-    def daily_value(self, daily_value: float):
+    def daily_value(self, daily_value: float) -> None:
         self._daily_value = daily_value
 
-    def calc_total_rental(self, number_days: int, discount: float):
+    def calc_total_rental(self, number_days: int, discount: float) -> float:
         result = self.daily_value * number_days * (1 - discount)
 
         if number_days > 7:
@@ -40,42 +40,42 @@ class Vehicle:
         return result
     
     @classmethod
-    def counter_vehicles(cls):
+    def counter_vehicles(cls) -> int:
         return cls._number_vehicles
 
     @classmethod
-    def increase_rent(cls, percent):
+    def increase_rent(cls, percent) -> float:
         cls.daily_value = cls.daily_value * (percent / 100)
 
         return cls.daily_value
 
 class Car(Vehicle):
-    def __init__(self, name: str, year: int, daily_value: float, type_gasoline: str):
+    def __init__(self, name: str, year: int, daily_value: float, type_gasoline: str) -> None:
         super().__init__(name, year, daily_value)
         self._type_gasoline = type_gasoline
 
     @property
-    def type_gasoline(self):
+    def type_gasoline(self) -> str:
         return self._type_gasoline
 
     @type_gasoline.setter
-    def type_gasoline(self, type_gasoline: str):
+    def type_gasoline(self, type_gasoline: str) -> None:
         self._type_gasoline = type_gasoline
 
 class Motorcycle(Vehicle):
-    def __init__(self, name: str, year: int, daily_value: float, cc: int):
+    def __init__(self, name: str, year: int, daily_value: float, cc: int) -> None:
         super().__init__(name, year, daily_value)
         self._cc = cc
 
     @property
-    def cc(self):
+    def cc(self) -> int:
         return self._cc
 
     @cc.setter
-    def cc(self, cc: int):
+    def cc(self, cc: int) -> None:
         self._cc = cc
 
-    def calc_total_rental(self, number_days, discount=0):
+    def calc_total_rental(self, number_days, discount=0) -> float:
         total_value = super().calc_total_rental(number_days, discount)
 
         if self.cc > 200:

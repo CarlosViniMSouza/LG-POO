@@ -2,4 +2,4 @@ Exercicio 07 (Codigo): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/
 
 Exercicio 07 (Q&A): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/utils/answers_task07.md
 
-Exercicio 08 (Bot): https://github.com/CarlosViniMSouza/LG-POO/blob/main/projects/bot_bookstore
+Exercicio 08 (Bot): https://github.com/CarlosViniMSouza/LG-POO/tree/main/projects/bot_bookstore

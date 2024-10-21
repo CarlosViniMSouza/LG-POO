@@ -1,5 +1,5 @@
 git add -A
-git commit -m "bot_rent_vehicles - add: forms_vehicles.txt"
+git commit -m "task07.py -> DONE"
 git push -u origin main
 git status
 

@@ -1,70 +1,60 @@
 class Student:
-    def __init__(self, name, code):
-        self.name = name
-        self.code = code
+    def __init__(self, name: str, code: int) -> None:
+        self._name = name
+        self._code = code
 
-    def get_name(self):
-        return self.name
+    def get_name(self) -> str:
+        return self._name
 
-    def get_code(self):
-        return self.code
+    def get_code(self) -> int:
+        return self._code
 
-    def show_infos(self):
-        print(f"Name student: {self.name} \nRegistration: {self.code}")
+    def show_infos(self) -> None:
+        print(f"Student: {self._name} || Registration: {self._code}")
 
 class Course:
-    def __init__(self, name, code):
-        self.name = name
-        self.code = code
-        # self.list_students = [Student(name, code)]
+    def __init__(self, name: str, code: int) -> None:
+        self._name = name
+        self._code = code
         self.list_students = []
 
-    def get_name(self):
-        return self.name
-
-    def get_code(self):
-        return self.code
-
-    def show_infos(self):
-        print(f"Name course: {self.name} \nCode: {self.code}")
-    
-    # @classmethod
-    def add_student(self, student):
+    def add_student(self, student) -> None:
         new_student = Student(student.get_name(), student.get_code())
         self.list_students.append(new_student)
 
         print("New student added!")
+    
+    def get_name(self) -> str:
+        return self._name
 
-    # @classmethod
-    def show_students(self):
+    def get_code(self) -> int:
+        return self._code
+
+    def show_infos(self) -> None:
+        print(f"Course: {self._name} || Code: {self._code}")
+
+    def show_students(self) -> None:
         for student in self.list_students:
             student.show_infos()
 
-            #print(f"List all students: {student.show_info()}")
-
 class School:
-    def __init__(self, name, code):
-        self.name = name
-        self.code = code
-        # self.list_courses = [Course(name, code)]
+    def __init__(self, name: str, code: int) -> None:
+        self._name = name
+        self._code = code
         self.list_courses = []
 
-    def show_infos(self):
-        print(f"School name: {self.name}")
-
-    # @classmethod
-    def add_course(self, course):
+    def add_course(self, course) -> None:
         new_course = Course(course.get_name(), course.get_code())
         self.list_courses.append(new_course)
 
         print("New course added!")
 
-    # @classmethod
-    def show_courses(self):
+    def show_infos(self) -> None:
+        print(f"School Name: {self._name}")
+
+    def show_courses(self) -> None:
         for course in self.list_courses:
             course.show_infos()
-
-            # print(f"List all courses: {self.list_courses}")
 
 # Create objects
 

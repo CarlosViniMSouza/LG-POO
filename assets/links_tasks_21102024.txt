@@ -1,0 +1,5 @@
+Exercicio 07 (Codigo): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/task07.py
+
+Exercicio 07 (Q&A): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/utils/answers_task07.md
+
+Exercicio 08 (Bot): https://github.com/CarlosViniMSouza/LG-POO/blob/main/projects/bot_bookstore

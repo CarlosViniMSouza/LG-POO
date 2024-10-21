@@ -2,5 +2,5 @@ Name: BMX XL
 Year: 2020 
 Daily Value: 75 
 Cylinders Cap: 500 
-Rent calculated (without discount): R$526.1 
+Rent calculated (without discount): R$526.1
 Rent calculated (with 10% discount): R$473.6

@@ -103,4 +103,3 @@ class BookStore:
     @classmethod
     def show_total_books(cls) -> None:
         print(f"Total books founded: {cls._total_books}")
-        

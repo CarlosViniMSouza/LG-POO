@@ -1,83 +1,65 @@
-"""
-WARNING:
+from botcity.web import WebBot, Browser
+from webdriver_manager.chrome import ChromeDriverManager
 
-Please make sure you install the bot dependencies with `pip install --upgrade -r requirements.txt`
-in order to get all the dependencies on your Python environment.
-
-Also, if you are using PyCharm or another IDE, make sure that you use the SAME Python interpreter
-as your IDE.
-
-If you get an error like:
-```
-ModuleNotFoundError: No module named 'botcity'
-```
-
-This means that you are likely using a different Python interpreter than the one used to install the dependencies.
-To fix this, you can either:
-- Use the same interpreter as your IDE and install your bot with `pip install --upgrade -r requirements.txt`
-- Use the same interpreter as the one used to install the bot (`pip install --upgrade -r requirements.txt`)
-
-Please refer to the documentation for more information at
-https://documentation.botcity.dev/tutorials/python-automations/web/
-"""
-
-
-# Import for the Web Bot
-from botcity.web import WebBot, Browser, By
-
-# Import for integration with BotCity Maestro SDK
-from botcity.maestro import *
-
-# Disable errors if we are not connected to Maestro
-BotMaestroSDK.RAISE_NOT_CONNECTED = False
-
+from services.services import *
 
 def main():
-    # Runner passes the server url, the id of the task being executed,
-    # the access token and the parameters that this task receives (when applicable).
-    maestro = BotMaestroSDK.from_sys_args()
-    ## Fetch the BotExecution with details from the task, including parameters
-    execution = maestro.get_execution()
-
-    print(f"Task ID is: {execution.task_id}")
-    print(f"Task Parameters are: {execution.parameters}")
-
     bot = WebBot()
-
-    # Configure whether or not to run on headless mode
     bot.headless = False
+    bot.browser = Browser.CHROME
+    bot.driver_path = ChromeDriverManager().install()
+    
+    try:
+        bot.browse("https://www.botcity.dev")
+    
+        author = Author("The Man") # Criando autor
+        bookstore = BookStore("My Personal BookStore") # Criando a bookstore
 
-    # Uncomment to change the default Browser to Firefox
-    # bot.browser = Browser.FIREFOX
+        # Adicionando books à bookstore e a classe 'Author'
+        book1 = Book("The C++ Programming Language", author, 100)
+        book2 = Book("The Big Start of Python", author, 101)
 
-    # Uncomment to set the WebDriver path
-    # bot.driver_path = "<path to your WebDriver binary>"
+        bookstore.add_book(book1)
+        bookstore.add_book(book2)
+        print("\n")
 
-    # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
+        author.add_book(book1)
+        author.add_book(book2)
+        print("\n")
 
-    # Implement here your logic...
-    ...
+        bookstore.show_total_books() # Exibindo total de livros
+        print("\n")
 
-    # Wait 3 seconds before closing
-    bot.wait(3000)
+        bookstore.show_available_books() # Exibindo o inventario
+        print("\n")
 
-    # Finish and clean up the Web Browser
-    # You MUST invoke the stop_browser to avoid
-    # leaving instances of the webdriver open
-    bot.stop_browser()
+        bookstore.register_loan("The C++ Programming Language") # Emprestando um livro
+        bookstore.register_loan("The C++ Programming Language") # Emprestando o livro (de novo)
+        bookstore.register_loan("The C++ Great Programming Language") # Emprestando livro não existente
+        print("\n")
 
-    # Uncomment to mark this task as finished on BotMaestro
-    # maestro.finish_task(
-    #     task_id=execution.task_id,
-    #     status=AutomationTaskFinishStatus.SUCCESS,
-    #     message="Task Finished OK."
-    # )
+        # Devolvendo o livro
+        book1.return_book()
+        book2.return_book()
+        print("\n")
 
+        # Registrando devolucao
+        bookstore.register_return("The C++ Programming Language")
+        bookstore.register_return("The Big Start of Python")
 
-def not_found(label):
-    print(f"Element not found: {label}")
+        # Tentando devolver livro não existente
+        bookstore.register_return("The C++ Great Programming Language")
+        print("\n")
 
+        bookstore.show_available_books() # Exibindo livros disponiveis
+    
+    except Exception as ex:
+        print(ex)
+        bot.save_screenshot(r'C:\Users\matutino\Documents\projects\lg-poo\projects\bot_bookstore\resources\erro.png')
+
+    finally:
+        bot.wait(3000)
+        bot.stop_browser()
 
 if __name__ == '__main__':
     main()

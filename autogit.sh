@@ -1,7 +1,7 @@
 git add -A
-git commit -m "bot_bookstore -> services.py in progress"
+git commit -m "task09.py -> DONE"
 git push -u origin main
 git status
 
-# Example stopped in page 37
-# Task in 'Exercicio 6'
+# Example stopped in page 39
+# Task in 'Exercicio 9'

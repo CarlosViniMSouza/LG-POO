@@ -1,5 +1,5 @@
 git add -A
-git commit -m "task12.py and ./task12 -> DONE"
+git commit -m "task08.py & bot_bookstore -> DONE"
 git push -u origin main
 git status
 

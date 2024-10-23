@@ -1,65 +1,39 @@
+# from botcity.plugins.http import BotHttpPlugin
 from botcity.web import WebBot, Browser
 from webdriver_manager.chrome import ChromeDriverManager
 
 from services.services import *
+from services.forms import fillout_forms_base
 
 def main():
     bot = WebBot()
     bot.headless = False
     bot.browser = Browser.CHROME
     bot.driver_path = ChromeDriverManager().install()
-    
+
+    book_loan = Book("The C++ Programming Language", "The Man", 100)
+
     try:
-        bot.browse("https://www.botcity.dev")
-    
-        author = Author("The Man") # Criando autor
-        bookstore = BookStore("My Personal BookStore") # Criando a bookstore
+        bot.browse("http://127.0.0.1:5500/projects/bot_bookstore/bootstrap/index.html")
 
-        # Adicionando books à bookstore e a classe 'Author'
-        book1 = Book("The C++ Programming Language", author, 100)
-        book2 = Book("The Big Start of Python", author, 101)
+        fillout_forms_base(bot, book_loan)
 
-        bookstore.add_book(book1)
-        bookstore.add_book(book2)
-        print("\n")
+        bot.browse("http://127.0.0.1:5500/projects/bot_bookstore/bootstrap/models/index.html")
 
-        author.add_book(book1)
-        author.add_book(book2)
-        print("\n")
-
-        bookstore.show_total_books() # Exibindo total de livros
-        print("\n")
-
-        bookstore.show_available_books() # Exibindo o inventario
-        print("\n")
-
-        bookstore.register_loan("The C++ Programming Language") # Emprestando um livro
-        bookstore.register_loan("The C++ Programming Language") # Emprestando o livro (de novo)
-        bookstore.register_loan("The C++ Great Programming Language") # Emprestando livro não existente
-        print("\n")
-
-        # Devolvendo o livro
-        book1.return_book()
-        book2.return_book()
-        print("\n")
-
-        # Registrando devolucao
-        bookstore.register_return("The C++ Programming Language")
-        bookstore.register_return("The Big Start of Python")
-
-        # Tentando devolver livro não existente
-        bookstore.register_return("The C++ Great Programming Language")
-        print("\n")
-
-        bookstore.show_available_books() # Exibindo livros disponiveis
-    
     except Exception as ex:
         print(ex)
         bot.save_screenshot(r'C:\Users\matutino\Documents\projects\lg-poo\projects\bot_bookstore\resources\erro.png')
 
-    finally:
+    finally:        
         bot.wait(3000)
-        bot.stop_browser()
+
+    bot.stop_browser()
+
+    print('Finished!')
+
+def not_found(label):
+    print(f"Element not found: {label}")
+
 
 if __name__ == '__main__':
     main()

@@ -36,6 +36,9 @@ class Book:
     def get_title(self) -> str:
         return self._title
 
+    def get_author(self) -> str:
+        return self.author
+
     def get_code(self) -> int:
         return self._code
 
@@ -45,6 +48,10 @@ class Book:
     def set_title(self, title) -> None:
         self._title = title
 
+    def set_author(self, author) -> None:
+        # self.author = Author(author)
+        self.author = author
+        
     def set_code(self, code) -> None:
         self._code = code
 
@@ -104,3 +111,42 @@ class BookStore:
     def show_total_books(cls) -> None:
         print(f"Total books founded: {cls._total_books}")
         
+"""   
+author = Author("The Man")
+bookstore = BookStore("My Personal BookStore")
+
+# Adicionando books à bookstore e a classe 'Author'
+book1 = Book("The C++ Programming Language", author, 100)
+book2 = Book("The Big Start of Python", author, 101)
+
+bookstore.add_book(book1)
+bookstore.add_book(book2)
+print("\n")
+
+author.add_book(book1)
+author.add_book(book2)
+print("\n")
+
+bookstore.show_total_books()
+print("\n")
+
+bookstore.show_available_books()
+print("\n")
+
+bookstore.register_loan("The C++ Programming Language")
+bookstore.register_loan("The C++ Programming Language")
+bookstore.register_loan("The C++ Great Programming Language")
+print("\n")
+
+book1.return_book()
+book2.return_book()
+print("\n")
+
+bookstore.register_return("The C++ Programming Language")
+bookstore.register_return("The Big Start of Python")
+
+bookstore.register_return("The C++ Great Programming Language")
+print("\n")
+
+bookstore.show_available_books() # Exibindo livros disponiveis    
+"""

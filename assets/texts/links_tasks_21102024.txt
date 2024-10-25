@@ -9,3 +9,5 @@ Exercicio 08 (Bot): https://github.com/CarlosViniMSouza/LG-POO/tree/main/project
 
 Exercicio 09 (Codigo): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/task09.py
 Exercicio 09 (Q&A): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/utils/answers_task09.md
+
+Exercicio 10 (BotBase, BotCadastro, BotAtualizacao): https://github.com/CarlosViniMSouza/LG-POO/tree/main/projects/bot_forms_poli

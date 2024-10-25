@@ -46,12 +46,8 @@ pip install webdriver_manager
 pip freeze > requirements.txt
 ```
 
-- Para o lab
+- Converter em executavel
 
 ```bash
-$ cd desafio07 && source venv/Scripts/activate && python src/main.py
-```
-
-```bash
-$ pip install kaleido==0.1.0post1
+$ pyinstaller --onefile --windowed <\your_script.py\>
 ```

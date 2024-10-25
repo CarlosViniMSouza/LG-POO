@@ -1,5 +1,5 @@
 git add -A
-git commit -m "bot_payment_employeer -> worked!"
+git commit -m "bot_payment_employeer -> finished!"
 git push -u origin main
 git status
 

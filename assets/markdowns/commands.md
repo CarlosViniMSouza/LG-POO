@@ -23,7 +23,7 @@ python -m cookiecutter https://github.com/botcity-dev/bot-python-template/archiv
 5. Digite o comando: 
 
 ```bash
-conda create -n <name_project\> python=3.10 anaconda
+conda create -n <name_project/> python=3.10 anaconda
 ```
 
 6. Selecionar o ambiente virtual com python 3.10;
@@ -49,5 +49,5 @@ pip freeze > requirements.txt
 - Converter em executavel
 
 ```bash
-$ pyinstaller --onefile --windowed <\your_script.py\>
+$ pyinstaller --onefile --windowed C:/Users/CarlosViniMSouza/Documents/Projects/LG-POO/src/tasks/task13/tkinter-gui.py
 ```

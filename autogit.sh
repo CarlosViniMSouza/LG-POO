@@ -1,5 +1,5 @@
 git add -A
-git commit -m "task14 && test.py -> in progress"
+git commit -m "task14: class SalesHistoric -> DONE"
 git push -u origin main
 git status
 

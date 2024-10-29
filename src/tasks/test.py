@@ -131,6 +131,9 @@ welcome_user("Carlos")
 """
 
 """
+
+## Example 09 - decorators parametized
+
 def product_number(number):
     def decorator(func):
         def wrapper(x):
@@ -146,6 +149,9 @@ print(f"The sum is {sum_two(5)}")
 """
 
 """
+
+## Example 10 - Generators
+
 def generate_pares(limit):
     n = 0
 
@@ -158,6 +164,7 @@ for number in generate_pares(100):
 """
 
 """
+
 class Counter:
     def __init__(self, limit):
         self.limit = limit

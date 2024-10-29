@@ -1,5 +1,5 @@
 git add -A
-git commit -m "bot_forms_poli (Atividade 10) -> DONE"
+git commit -m "task14 && test.py -> in progress"
 git push -u origin main
 git status
 

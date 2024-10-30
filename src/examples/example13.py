@@ -3,11 +3,12 @@ Page: 53
 Image: -
 """
 
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractclassmethod # abstractmethod
 
 class Animal(ABC):
-
     @abstractclassmethod
+    #@abstractmethod
+    #@classmethod
     def do_sound(self):
         pass
 

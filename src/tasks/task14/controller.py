@@ -37,42 +37,56 @@ class SalesHistoric(Sales):
         
         return sales
     
-### Continue Here to below
+###
 
-class Employeer:
-    def __init__(self, name: str, position: str, salary: float) -> None:
+def auth_access(func):
+    def wrapper(*args, **kwargs):
+        user = kwargs.get('user')
+        if user and user.position == "Manager":
+            return func(*args, **kwargs)
+        else:
+            raise PermissionError("Access denied!")
+    return wrapper
+
+class Employee:
+    def __init__(self, name, position, salary):
         self.name = name
         self.position = position
         self.salary = salary
 
-class HRSystem(Employeer):
-    list_employeers = []
+class HRSystem:
+    def __init__(self):
+        self.employees = []
 
-    def increase_salary(self) -> float:
-        self.salary += 0.2 # 20% increment    
-        return self.salary 
-    
-    # @classmethod # Decorator
-    def authenticate_access(self) -> None:
-        if self.position == "Manager":
-            return f"Approved Salary Increase"
-        else:
-            print(f"Rejected Salary Increase")
+    def add_employee(self, employees):
+        self.employees.append(employees)
+
+    @auth_access
+    def increase_salary(self, user, name_employee, increment):
+        for employees in self.employees:
+            if employees.name == name_employee:
+                employees.salary += increment
+                print(f"{user.name} has authorized {name_employee} to start receiving R$ {employees.salary} next month")
+                return
+            
+        print(f"{name_employee} Not Found!")
 
 ###
 
 class Account:
-    transaction_list = []
+    def __init__(self):
+        self.transactions = []
 
-    def filter_transaction_type(cls, type_transaction) -> list:
-        type_transaction = list(filter(lambda x: x == "Deposit", cls.transaction_list))
+    def add_transaction(self, type, value):
+        self.transactions.append({'type': type, 'value': value})
 
-        return type_transaction
+    def filter_transactions_por_type(self, type):
+        return list(filter(lambda transaction: transaction['type'] == type, self.transactions))
 
-    def applied_rate(cls, rate) -> list:
-        rate_transaction = list(map(lambda x: x == "Withdrawal", cls.transaction_list))
-
-        for transaction in rate_transaction:
-            rate_transaction *= 0.1
-
-        return rate_transaction
+    def apply_fee(self, rate):
+        def rate_withdrawal_applied(transaction):
+            if transaction['type'] == 'Withdrawal':
+                transaction['value'] -= rate
+            return transaction
+        
+        self.transactions = list(map(rate_withdrawal_applied, self.transactions))

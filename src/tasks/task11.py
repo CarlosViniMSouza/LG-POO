@@ -1,7 +1,8 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 
 class Payment(ABC):
-    @abstractclassmethod
+    @abstractmethod
+    @classmethod
     def process_payment(self):
         pass
 

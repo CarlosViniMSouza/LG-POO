@@ -28,7 +28,6 @@ def fillout_employeer_per_hour(employeer):
     if not bot.find( "button-ok-hourly", matching=0.97, waiting_time=10000):
         not_found("button-ok-hourly") # type: ignore
     bot.click()
-    
 
 def fillout_employeer_salary(employeer):
     if not bot.find( "label-name-montly", matching=0.97, waiting_time=10000):
@@ -82,6 +81,7 @@ def fillout_employeer_commissioned(employeer):
         not_found("button-show-salaries") # type: ignore
     bot.click()
     
+
 
 
 

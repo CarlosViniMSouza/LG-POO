@@ -15,11 +15,12 @@ def main():
     employeer_per_hour = EmployeerPerHour(name="Victor", register=1000, hours_worked=160, value_hour=30.55)
     employeer_salary = EmployeerSalary(name="Vinicius M. S.", register=1001, monthly_salary=5538.89)
     employeer_commissioned = EmployeerCommissioned(name="Vitoria", register=1002, base_salary=3450.6, sales=10, commission_rate=25.45)
+    
     app_path_home = r"C:\Users\CarlosViniMSouza\Documents\Projects\LG-POO\assets\dist\tkinter-gui.exe"
     # app_path_lab = r"C:\Users\matutino\Documents\projects\LG-POO\assets\dist\tkinter-gui.exe"
 
     bot = DesktopBot()
-    bot.execute(app_path_home)
+    bot.execute(app_path_lab)
 
     try:
         fillout_employeer_per_hour(employeer_per_hour)

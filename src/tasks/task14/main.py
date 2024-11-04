@@ -1,7 +1,6 @@
 from controller import *
 
 def main():
-    """
     SalesHistoric.add_product_to_list("T-shirt", 10, 100.5)
     SalesHistoric.add_product_to_list("Jeans", 20, 90)
     SalesHistoric.add_product_to_list("Bag", 30, 60.5)
@@ -38,7 +37,6 @@ def main():
 
     account.apply_fee(60)
     print("Transactions after application of fee:", account.transactions)
-    """
 
 if __name__ == "__main__":
     main()

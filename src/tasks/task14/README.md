@@ -1,6 +1,6 @@
-- Crie uma classe `Venda` que contenha o nome do produto, a quantidade vendida e o preço unitário. Em seguida, crie uma classe `HistoricoVendas` que armazene uma lista de vendas.
+Crie uma classe `Venda` que contenha o nome do produto, a quantidade vendida e o preço unitário. Em seguida, crie uma classe `HistoricoVendas` que armazene uma lista de vendas.
 
-Implemente:
+- Implemente:
 
 1. Um método `total_por_produto()` que retorne o total arrecadado por cada produto usando reduce.
 2. Um gerador `listar_vendas_acima_de(valor)` que liste apenas as vendas acima de um valor específico.
@@ -9,9 +9,9 @@ Implemente:
 
 ---
 
-- Crie uma classe `Funcionario` com atributos como **nome, cargo, e salario**. Em seguida, crie uma classe `SistemaRH` que gerencie uma lista de funcionários. 
+Crie uma classe `Funcionario` com atributos como **nome, cargo, e salario**. Em seguida, crie uma classe `SistemaRH` que gerencie uma lista de funcionários. 
 
-Adicione:
+- Adicione:
 
 1. Um método `aumentar_salario` que aumenta o salário dos funcionários.
 2. Um decorator `autenticar_acesso` que verifique se o usuário tem permissão para realizar um aumento salarial. 
@@ -20,9 +20,9 @@ Adicione:
 
 ---
 
-- Crie uma classe `Conta` que armazene uma lista de transações. 
+Crie uma classe `Conta` que armazene uma lista de transações. 
 
-Implemente:
+- Implemente:
 
 1. Um método `filtrar_transacoes_por_tipo(tipo)` que use filter para retornar todas as transações de um determinado tipo (ex.: "Depósito").
 2. Um método `aplicar_taxa` que use map para aplicar uma taxa a cada transação de tipo "Saque".

@@ -214,8 +214,8 @@ for name in names:
 
 """
 class Produto:
-    def __init__(self, nome, preco, categoria):
-        self.nome = nome
+    def __init__(self, name, preco, categoria):
+        self.name = name
         self.preco = preco
         self.categoria = categoria
 
@@ -229,11 +229,11 @@ produtos = [
 
 # Usando `filter` para selecionar apenas produtos eletrônicos
 eletronicos = list(filter(lambda p: p.categoria == "Eletrônicos", produtos))
-print("Produtos eletrônicos:", [p.nome for p in eletronicos])
+print("Produtos eletrônicos:", [p.name for p in eletronicos])
 
 # Usando `map` para aplicar um desconto de 10% em todos os produtos
-produtos_com_desconto = list(map(lambda p: Produto(p.nome, p.preco * 0.9, p.categoria), produtos))
-print("Produtos com desconto:", [(p.nome, p.preco) for p in produtos_com_desconto])
+produtos_com_desconto = list(map(lambda p: Produto(p.name, p.preco * 0.9, p.categoria), produtos))
+print("Produtos com desconto:", [(p.name, p.preco) for p in produtos_com_desconto])
 """
 
 """
@@ -294,3 +294,98 @@ historico.adicionar_transacao(Transacao("Saque", 100))
 for transacao in historico.gerar_extrato():
     print(transacao)
 """
+
+import json, csv, pickle
+
+class Student:
+    def __init__(self, name: str, age: int, notes: list) -> None:
+        self.name = name
+        self.age = age
+        self.notes = notes
+
+    def calculate_mean(self):
+        return sum(self.notes) / len(self.notes)
+
+
+class ManagerStudents:
+    def __init__(self) -> None:
+        self.students = []
+
+    def add_students(self, student) -> None:
+        self.students.append(student)
+
+    def save_json(self, file_name="students.json") -> None:
+        data = [
+            {
+                "name": student.name, 
+                "age": student.age, 
+                "notes": student.notes
+            } for student in self.students
+        ]
+
+        with open(file_name, "w") as file_json:
+            json.dump(data, file_json)
+        
+        print(f"Data saved in {file_name}")
+
+    def load_json(self, file_name="students.json") -> None:
+        with open(file_name, "r") as file_json:
+            data = json.load(file_json)
+            self.students = [Student(**student) for student in data]
+
+        print(f"Data loaded from {file_name}")
+
+    def save_csv(self, file_name="students.csv") -> None:
+        with open(file_name, "w", newline="") as file_csv:
+            writer = csv.writer(file_csv)
+            writer.writerow(["Name", "Age", "Notes"])
+
+            for student in self.students:
+                writer.writerow([student.name, student.age, student.notes])
+
+            print(f"Data saved in {file_name}")
+
+    def load_csv(self, file_name="students.csv") -> None:
+        with open(file_name, "r") as file_csv:
+            reader = csv.reader(file_csv)
+            next(reader)  # Pular cabeçalho
+
+            self.students = [Student(line[0], int(line[1]), eval(line[2])) for line in reader]
+
+        print(f"Data loaded from {file_name}")
+
+    def save_pickle(self, file_name="students.pkl") -> None:
+        with open(file_name, "wb") as file:
+            pickle.dump(self.students, file)
+
+        print(f"Data saved in {file_name}")
+
+    def load_pickle(self, file_name="students.pkl") -> None:
+        with open(file_name, "rb") as file:
+            self.students = pickle.load(file)
+
+        print(f"Data loaded from {file_name}")
+
+    def list_students(self) -> None:
+        for student in self.students:
+            print(f"Name: {student.name}, Age: {student.age}, Mean: {student.calculate_mean():.2f}")
+
+# Criando instância do manager e adicionando alunos
+manager = ManagerStudents()
+manager.add_students(Student("Alice", 20, [8, 7.5, 9]))
+manager.add_students(Student("Bob", 22, [6, 5, 7]))
+
+# Salvando e carregando Data em JSON
+manager.save_json()
+manager.load_json()
+manager.list_students()
+
+# Salvando e carregando Data em CSV
+manager.save_csv()
+manager.load_csv()
+manager.list_students()
+
+# Salvando e carregando Data com pickle
+manager.save_pickle()
+manager.load_pickle()
+manager.list_students()

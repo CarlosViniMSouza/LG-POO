@@ -1,0 +1,3 @@
+Atividade 15 (Livro e Biblioteca): https://github.com/CarlosViniMSouza/LG-POO/blob/main/src/tasks/task15
+
+Atividade 15 (Arquivos gerados): https://github.com/CarlosViniMSouza/LG-POO/tree/main/assets/books

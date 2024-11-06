@@ -1,43 +1,14 @@
 from functools import reduce
-from json import dumps
+import json, csv, pickle
 
-from .Order import Order
+from .utils.log_activity import log_activity
 from .Product import Product
+from .Order import Order
 
-class FileNotFoundError(Exception):
-    """
-    Error opening or loading a file
-    """
-    pass
-
-class InvalidValueError(Exception):
-    """
-    Prices must be positive value.
-    """
-    pass
-
-class InvalidQuantityError(Exception):
-    """
-    Quantity must be positive value.
-    """
-    pass
-
+@log_activity
 class OrderManager:
     def __init__(self) -> None:
-        self.orders: list = []
-
-    ## Decorator Logs ##
-
-    def log_activity(func):
-        def wrapper(*args, **kwargs):
-            pass
-            
-        return wrapper
-
-    ## Methods ##
-
-    def show_orders(self) -> list:
-        return self.orders
+        self.orders = []
 
     # @log_activity
     def add_order(self, order) -> None:
@@ -45,40 +16,145 @@ class OrderManager:
 
     # @log_activity
     def list_orders_by_status(self, status) -> list:
-        return list(filter(lambda order: order.status == status, self.orders)) 
+        list_orders = list(
+            filter(lambda order: order.status == status, self.orders)
+        )
 
-    def orders_by_category(self, category) -> int:
-        quantities = map(
-            lambda order: sum(
-                order.quantity[product] for product in order.products if product.category == category),
-            self.orders
-        ) 
-        
-        total_quantity = reduce(lambda x, y: x + y, quantities, 0)
-        
-        return total_quantity
+        return [order.details_order() for order in list_orders]
 
-    def total_sales(self): 
-        total = map(
-            lambda order: sum(product.price * order.quantity[product] for product in order.products),
+    def orders_by_category(self, category) -> dict:
+        products_by_category = list(
+            filter(
+                lambda product: any(
+                    prod.category == category for prod in product.products
+                ),
                 self.orders
             )
-                
+        ) 
+        
+        return {category: len(products_by_category)}
+
+    def total_sales(self) -> float:
+        total = map(
+            lambda order: sum(
+                product.price * order.quantity[product] for product in order.products
+            ), self.orders)
+        
         total_sales = reduce(lambda x, y: x + y, total, 0) 
-        # Valor inicial 0 return total_sales
 
         return total_sales
 
-    ## File Manipulation ##
+    ## Save File (JSON) ##
+    def save_json(self, file) -> None:
+        try:
+            with open(file, 'w') as file_json:
+                json.dump([order.to_dict() for order in self.orders], file_json)
+            print(f"Data saved successfully at {file} \n")
 
-    def save_data_json(self) -> None:
-        pass
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
 
-    def load_data_json(self) -> None:
-        pass
+        except IOError:
+            print(f"Error: Problem saving data to file {file}.")
 
-    def save_data_binary(self) -> None:
-        pass
+    ## Load File (JSON) ##
+    def load_json(self, file) -> None:
+        try:
+            with open(file, "r") as file_json:
+                data = json.load(file_json)
+                self.orders = [Order.from_dict(order) for order in data]
+            print(f"Data loaded successfully from {file} \n")
 
-    def load_data_binary(self) -> None:
-        pass
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
+
+        except IOError:
+            print(f"Error: Problem saving data to file {file}.")
+
+    ## Save File (CSV) ##
+    def save_csv(self, file) -> None:
+        try: 
+            with open(file, 'w', newline='') as file_csv: 
+                fieldnames = ['client', 'status', 'name', 'price', 'category', 'quantity'] 
+                writer = csv.DictWriter(file_csv, fieldnames=fieldnames) 
+                writer.writeheader()
+                
+                for order in self.orders: 
+                    for product in order.products:
+                        writer.writerow({
+                            'client': order.client, 
+                            'status': order.status, 
+                            'name': product.name, 
+                            'price': product.price, 
+                            'category': product.category, 
+                            'quantity': order.quantity[product]
+                        })
+            
+            print(f"Data saved successfully at {file} \n")
+
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
+
+        except IOError: 
+            print(f"Error: Problem saving data to file {file}.")
+
+    ## Load File (CSV) ##
+    def load_csv(self, file): 
+        try: 
+            with open(file, 'r') as file_csv: 
+                reader = csv.DictReader(file_csv) 
+                dict_orders = {}
+
+                for row in reader: 
+                    client = row['client'] 
+                    
+                    if client not in dict_orders: 
+                        dict_orders[client] = Order(client) 
+                        dict_orders[client].status = row['status']
+
+                        product = Product(
+                            name=row['name'],
+                            price=float(row['price']), 
+                            category=row['category']
+                        ) 
+
+                        quantity = int(row['quantity'])
+                        dict_orders[client].add_product(product, quantity) 
+                    
+                    self.orders = list(dict_orders.values())
+
+            print(f"Data loaded successfully from {file} \n")
+
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
+
+        except IOError: 
+            print(f"Error: Problem saving data to file {file}.")
+
+    ## Save File (PICKLE) ##
+    def save_pickle(self, file) -> None:
+        try:
+            with open(file, "wb") as file_pkl:
+                pickle.dump(self.orders, file_pkl)
+
+            print(f"Data saved successfully at {file} \n")
+
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
+
+        except IOError: 
+            print(f"Error: Problem saving data to file {file}.")
+
+    ## Load File (PICKLE) ##
+    def load_pickle(self, file) -> None:
+        try:
+            with open(file, "rb") as file:
+                self.orders = pickle.load(file)
+
+            print(f"Data loaded successfully from {file} \n")
+        
+        except FileNotFoundError:
+            print(f"Error: File {file} Not Found!")
+
+        except IOError: 
+            print(f"Error: Problem saving data to file {file}.")

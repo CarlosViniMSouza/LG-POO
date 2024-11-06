@@ -1,80 +1,78 @@
-from botcity.maestro import *
-from botcity.web import WebBot, Browser, By
-from webdriver_manager.chrome import ChromeDriverManager
+# from botcity.web import WebBot, Browser, By
+# from webdriver_manager.chrome import ChromeDriverManager
 
 from src.Product import Product
 from src.Order import Order
 from src.OrderManager import OrderManager
 
-BotMaestroSDK.RAISE_NOT_CONNECTED = False
-
 def main():
-    maestro = BotMaestroSDK.from_sys_args()
-    execution = maestro.get_execution()
-
-    print(f"Task ID is: {execution.task_id}")
-    print(f"Task Parameters are: {execution.parameters}")
-
     """
     bot = WebBot()
     bot.headless = False
     bot.browser = Browser.CHROME
     bot.driver_path = ChromeDriverManager().install()
 
-    # Implement here your logic...
     bot.browser("https://google.com")
-
+    
     bot.wait(3000)
     bot.stop_browser()
     """
 
-    ## Testing ##
+    # Criação dos products
+    product01 = Product("Camisa", 50.0, "Roupas")
+    product02 = Product("Calça", 100.0, "Roupas")
+    product03 = Product("Short", 60.0, "Roupas")
+    product04 = Product("Sunga", 30.0, "Roupas")
 
-    # Criando instâncias de Products com categorias 
-    product01 = Product("Caneta", 1.50, "Escolar") 
-    product02 = Product("Caderno", 10.00, "Escolar") 
-    product03 = Product("Borracha", 0.75, "Escolar") 
-    product04 = Product("Café", 5.00, "Alimento") 
-    
-    # Criando Orders com os Products 
-    products01 = [product01, product02] 
-    quant01 = {product01: 3, product02: 2} 
-    order01 = Order(products01, quant01, "João") 
-    
-    products02 = [product03, product04] 
-    quant02 = {product03: 4, product04: 1} 
-    order02 = Order(products02, quant02, "Maria") 
-    
-    # Criando instância da classe manager e adicionando Orders  
+    # Criação do pedido
+    order01 = Order("Cliente 1")
+    order01.add_product(product01, 10)
+    order01.add_product(product02, 20)
+
+    order02 = Order("Cliente 2")
+    order02.add_product(product03, 30)
+    order02.add_product(product04, 40)
+
+    # Criação do manager de pedidos
     manager = OrderManager()
     manager.add_order(order01)
     manager.add_order(order02)
 
-    # Vendo os pedidos realizados
-    print(manager.show_orders())
+    # Detalhes do pedido
+    print(f"\n{order01.details_order()}\n")
+    print(order02.details_order(), "\n")
+
+    # Alterar status dos pedidos
+    order01.update_status("Processing")
+    # order02.update_status("Enviado")
+
+    # Listar pedidos por status
+    print(f"List Orders 'New': {manager.list_orders_by_status("New")}", "\n")
+    print(f"List Orders 'Processing':  {manager.list_orders_by_status("Processing")}", "\n")
+    # print(manager.list_orders_by_status("Enviado"))
+
+    # Detalhes do pedido atualizado
+    print(f"\n{order01.details_order()}\n")
+
+    # Pedidos por categoria
+    print(f"'Clothing' Requests: {manager.orders_by_category("Roupas")}", "\n")
 
     # Total de vendas
-    print(manager.total_sales())
+    print(f"Total Sales: R$ {manager.total_sales()}")
+
+    # Salvar e carregar dados (MUDAR PATH ENTRE PCs)
+    path_json = r"C:\Users\CarlosViniMSouza\Documents\Projects\LG-POO\projects\bot_store_files\src\assets\orders.json"
+    path_pickle = r"C:\Users\CarlosViniMSouza\Documents\Projects\LG-POO\projects\bot_store_files\src\assets\orders.pkl"
+    path_csv = r"C:\Users\CarlosViniMSouza\Documents\Projects\LG-POO\projects\bot_store_files\src\assets\orders.csv"
     
-    # Verificando a quantidade vendida de Products da categoria "Escolar" 
-    quant_schools_products = manager.orders_by_category("Escolar") 
-    print(f"Quantidade vendida na categoria 'Escolar': {quant_schools_products}")
+    manager.save_json(path_json)
+    manager.load_json(path_json)
 
-    # Vendo quantos produtos tem status "Novo"
-    search_prod_by_status = manager.list_orders_by_status("Novo")
+    manager.save_csv(path_csv)
+    manager.load_csv(path_csv)
 
-    for product in search_prod_by_status:
-        print(f"Produtos com status 'Novo': {product}")
-
-    ## End Test ##
-
-    """
-    maestro.finish_task(
-        task_id=execution.task_id,
-        status=AutomationTaskFinishStatus.SUCCESS,
-        message="Task Finished OK."
-    )
-    """
+    manager.save_pickle(path_pickle)
+    manager.load_pickle(path_pickle)
 
 def not_found(label):
     print(f"Element not found: {label}")

@@ -1,5 +1,5 @@
 git add -A
-git commit -m "task17: in progress"
+git commit -m "task17: ToDo -> forms web"
 git push -u origin main
 git status
 

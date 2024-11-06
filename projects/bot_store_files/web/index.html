@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <title> Form Rent Vehicles </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <meta http-equiv="origin-trial" content="order-registration">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
+    <link href="./styles-toggle.css" rel="stylesheet">
+
+    <meta name="theme-color" content="#712cf9">
+</head>
+
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <main class="form-signin w-100 m-auto">
+        <form name="my-form">
+            <h1 class="h3 mb-3 fw-normal text-center">Order Registration</h1>
+
+            <div class="form-floating">
+                <input required name="name-field" id="name" type="text" class="form-control rounded" placeholder="Name">
+                <label for="name-field" class="form-label">Name</label>
+            </div>
+
+            <div class="form-floating">
+                <input required name="price-field" id="price" type="number" class="form-control rounded"
+                    placeholder="Price">
+                <label for="price-field" class="form-label">Price</label>
+            </div>
+
+            <div class="form-floating">
+                <input required name="category-field" id="category" type="text" class="form-control rounded"
+                    placeholder="Category">
+                <label for="category-field" class="form-label">Category</label>
+            </div>
+
+            <a id="submit" class="btn btn-success w-100 py-2 mt-4" role="button" onclick="sendData()">Submit</a>
+
+            <p class="mt-2 mb-2 text-body-secondary text-center">&copy; 2017 - 2023</p>
+        </form>
+    </main>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script async defer type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>

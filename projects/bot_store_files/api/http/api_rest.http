@@ -1,0 +1,83 @@
+// Inserir product
+POST http://127.0.0.1:5000/product
+Content-Type: application/json
+// OBS: É necessário pular uma linha, quando existir um corpo (body) 
+
+{
+    "name": "Borracha",
+    "price": 1.6,
+    "category": "escolar",
+}
+// Utiliza-se obrigatoriamente no início da linha os simbolos: ###
+// para separar uma requisção da outra. 
+###
+
+POST http://127.0.0.1:5000/product
+Content-Type: application/json
+// OBS: É necessário pular uma linha, quando existir um corpo (body) 
+
+{
+    "name": "Lapis",
+    "price": 2.5,
+    "category": "escolar",
+}
+// Utiliza-se obrigatoriamente no início da linha os simbolos: ###
+// para separar uma requisção da outra. 
+###
+
+// Listar todos os usuários em ordem alfabética do name
+GET http://127.0.0.1:5000/products
+Content-Type: application/json
+###
+
+// Obter usuário pelo ID
+//GET http://127.0.0.1:5000/product/{id}
+GET http://127.0.0.1:5000/product/1
+Content-Type: application/json
+###
+
+// Alterar usuário pelo ID
+// OBS: obrigado preencher o campo ID
+PUT http://127.0.0.1:5000/product 
+Content-Type: application/json
+// OBS: É necessário pular uma linha, quando existir um corpo (body) 
+
+{
+    "id": 1,
+    "name": "Borracha Azul",
+    "price": 1.6,
+    "category": "escolar",
+}
+###
+
+// Obter usuário pelo ID
+GET http://127.0.0.1:5000/product/1
+Content-Type: application/json
+###
+
+// Deletar usuário pelo ID
+DELETE http://127.0.0.1:5000/product/2
+Content-Type: application/json
+
+###
+// Listar todos os usuários em ordem alfabética do name - (IMPLEMENT)
+GET http://127.0.0.1:5000/product/list
+Content-Type: application/json
+
+###
+
+POST http://127.0.0.1:5000/order
+Content-Type: application/json
+// OBS: É necessário pular uma linha, quando existir um corpo (body)
+
+{
+  "products" : ["Borracha", "Caneta"],
+  "quantity" : {"Borracha": 10, "Caneta": 10},
+  "client" : "Carlos Souza",
+  "status": "New"
+}
+###
+
+// Utiliza-se obrigatoriamente no início da linha os simbolos: ###
+
+// para separar uma requisção da outra.

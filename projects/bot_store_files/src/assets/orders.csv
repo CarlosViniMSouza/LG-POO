@@ -1,5 +1,3 @@
 client,status,name,price,category,quantity
-Cliente 1,Processing,Camisa,50.0,Roupas,10
-Cliente 1,Processing,Calça,100.0,Roupas,20
-Cliente 2,New,Short,60.0,Roupas,30
-Cliente 2,New,Sunga,30.0,Roupas,40
+Cliente 1,New,T-shirt,50.0,Clothes,10
+Cliente 1,New,Jeans,100.0,Clothes,20

@@ -26,11 +26,9 @@ def check_product_exists(id):
 def create_product(product):
     try:
         conect = database.create_db()
+        print(conect)
         cursor = conect.cursor()
-
         sql = f"INSERT INTO product(name, price, category) VALUES('{product['name']}', '{product['price']}', '{product['category']}')"
-
-        print(sql)
 
         cursor.execute(sql)
         last_id = cursor.lastrowid
@@ -63,7 +61,6 @@ def list_products():
                 'name': product[1],
                 'price': product[2],
                 'category': product[3],
-                'email': product[4]
             })
 
     except Exception as ex:
@@ -92,8 +89,7 @@ def get_product_id(id):
                 'id': product[0],
                 'name': product[1],
                 'price': product[2],
-                'category': product[3],
-                'email': product[4]
+                'category': product[3]
             })
 
     except Exception as ex:
@@ -110,7 +106,6 @@ def update_product(product):
     try:
         conect = database.create_db()
         cursor = conect.cursor()
-
         sql = f"UPDATE product SET name = '{product['name']}', price = '{product['price']}', category = '{product['category']}' WHERE id = '{product['id']}'"
 
         cursor.execute(sql)
@@ -139,4 +134,3 @@ def delete_product(id):
     finally:
         cursor.close()
         conect.close()
-    

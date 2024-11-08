@@ -1,5 +1,5 @@
 git add -A
-git commit -m "api: worked | excel -> db: worked"
+git commit -m "mysql-connector replaced by pymysql"
 git push -u origin main
 git status
 

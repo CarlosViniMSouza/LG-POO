@@ -1,8 +1,8 @@
 from flask import Flask, make_response, jsonify, request
 from repository import product
 
-app_api = Flask('bot_store_files')
-app_api.config['JSON_SORT_KEYS'] = False
+app_api = Flask(__name__)
+# app_api.config['JSON_SORT_KEYS'] = False
 
 # Rota pra inicio da API #
 @app_api.route('/', methods=['GET'])

@@ -1,4 +1,4 @@
-import database
+from . import database
 
 # Verificar se Usuario existe
 def check_product_exists(id):

@@ -21,6 +21,8 @@ CREATE TABLE product(
     PRIMARY KEY (id)
 );
 
+-- Inserir produto no BD: INSERT INTO product(name, price, category) VALUES('name'. 'price', 'category')
+
 CREATE TABLE order(
     id int AUTO_INCREMENT
     -- See how to-do attributes

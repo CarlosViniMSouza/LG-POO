@@ -1,22 +1,37 @@
-import requests
+import mysql.connector
+import pymysql as MySQLdb
 
-def insert_product_db(product):
-    url = "http://127.0.0.1:5000/product"
-    headers = {"Content-Type": "application/json"}
-    data = {
-        "name": product["Name"],
-        "price": product["Price"],
-        "category": product["Category"],
-    }
-
-    print(data)
-
+def create_db():
     try:
-        response = requests.post(url=url, headers=headers, json=data)
-        response.raise_for_status()
+        db = MySQLdb.connect(
+            host='localhost',
+            port=3306,
+            user='root',
+            password='',
+            database='db_store_files'
+        )
 
-    except requests.exceptions.HTTPError as err:
-        print(f"Error HTTP: {err}")
-    
     except Exception as ex:
-        print(f"Error Exception: {ex}")
+        print(f'Error: {ex}')
+
+    return db
+
+
+def fetch_products():
+    connection = mysql.connector.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        password='',
+        database='db_store_files'
+    )
+    
+    cursor = connection.cursor()
+    cursor.execute("SELECT name, price, category FROM products")
+    
+    products = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    
+    return products

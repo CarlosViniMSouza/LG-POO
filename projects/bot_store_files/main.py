@@ -10,7 +10,7 @@ from src.services.forms.fillout_forms import fillout_forms
 from src.services.forms.fillout_excel import fillout_excel
 
 from src.services.spreadsheets import spreadsheets
-from src.services.database import database
+from src.services.database import product
 
 # Paths de Arquivos (CASA)
 path_json = r"C:\Users\CarlosViniMSouza\Documents\Projects\LG-POO\projects\bot_store_files\assets\orders.json"
@@ -25,17 +25,20 @@ def main():
     bot.driver_path = EdgeChromiumDriverManager().install()
 
     try:
-        bot.browse("http://127.0.0.1:5500/projects/bot_store_files/web/index.html")
+        link_forms = "http://127.0.0.1:5500/projects/bot_store_files/web/index.html"
+        bot.browse(link_forms)
         bot.wait(2000)
-
+        
         product01 = Product("T-shirt", 50.0, "Clothes")
         product02 = Product("Jeans", 100.0, "Clothes")
         product03 = Product("Shoe", 150.0, "Footwear")
 
         products = [product01, product02, product03]
 
+        # list_products = product.fetch_products()
+
         try:
-            fillout_forms(bot, product01)
+            fillout_forms(bot, products)
             fillout_excel(products, path_xlsx)
         
         except Exception as ex:
@@ -62,7 +65,7 @@ def main():
             df = spreadsheets.read_excel(path_xlsx, 'Products Order')
 
             for index, product in df.iterrows():
-                database.insert_product_db(product)
+                product.insert_product_db(product)
 
             spreadsheets.show_data_excel(df)
 
